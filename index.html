@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện Nghe Phân Biệt Âm</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .question {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 600px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.5s ease;
+      }
+      .audio {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .options label {
+        display: block;
+        margin: 8px 0;
+        cursor: pointer;
+      }
+      .options input {
+        margin-right: 10px;
+      }
+      .btn {
+        display: inline-block;
+        margin: 15px 5px 0 5px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #45a049;
+      }
+      .result {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 1.1em;
+      }
+
+      .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+      }
+      .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+      }
+
+      .guide {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 1em;
+        color: #333;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title"></h1>
+    <div id="questions-container"></div>
+
+    <div class="guide">
+      <h3>Hướng dẫn phím tắt:</h3>
+      <ul>
+        <li><strong>1-5:</strong> Chọn đáp án tương ứng.</li>
+        <li><strong>Enter:</strong> Xác nhận câu trả lời hoặc chuyển sang câu tiếp theo sau khi kiểm tra.</li>
+        <li><strong>Space:</strong> Phát lại âm thanh câu hỏi hoặc chuyển sang câu tiếp theo nếu đã chọn và xác nhận câu trả lời.</li>
+      </ul>
+    </div>
+
+    <script>
+      const questions = [
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chair--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chair",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃeə(r)/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/cheese--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "cheese",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃiːz/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/check--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "check",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃek/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/choose--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "choose",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃuːz/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chalk--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chalk",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃɔːk/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chicken--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chicken",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /ˈtʃɪkən/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/cheap--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "cheap",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃiːp/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chin--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chin",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃɪn/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chapter--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chapter",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /ˈtʃæptə(r)/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/cheer--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "cheer",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃɪə(r)/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/child--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "child",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃaɪld/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chess--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chess",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃes/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chat--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chat",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃæt/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/chase--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "chase",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃeɪs/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/church--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "church",
+      "correctAnswer": "1",
+      "pronunciation": "/tʃ/ - /tʃɜːtʃ/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/jungle--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "jungle",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /ˈdʒʌŋɡl/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/joke--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "joke",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒəʊk/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/judge--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "judge",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒʌdʒ/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/juice--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "juice",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒuːs/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/jam--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "jam",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒæm/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/jeans--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "jeans",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒiːnz/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/job--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "job",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒɒb/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/jump--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "jump",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒʌmp/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/join--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "join",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒɔɪn/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/jog--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "jog",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒɒɡ/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/joy--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "joy",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒɔɪ/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/general--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "general",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /ˈdʒenrəl/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/giraffe--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "giraffe",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒəˈræf/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/giant--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "giant",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /ˈdʒaɪənt/"
+    },
+    {
+      "audio": "https://ssl.gstati3.com/dictionary/static/sounds/oxford/January--_gb_1.mp3",
+      "options": [
+        "1. /tʃ/",
+        "2. /dʒ/",
+        "3. /ʒ/",
+        "4. /d/",
+        "5. /ʃ/"
+      ],
+      "word": "January",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /ˈdʒænjuəri/"
+    }
+  ];
+
+      let currentIndex = -1;
+      let verified = false;
+
+      function randomQuestion() {
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * questions.length);
+        } while (newIndex === currentIndex);
+        return newIndex;
+      }
+
+      function loadNextQuestion() {
+        verified = false;
+        const container = document.getElementById("questions-container");
+        container.classList.add("fade-out");
+
+        setTimeout(() => {
+          currentIndex = randomQuestion();
+          const q = questions[currentIndex];
+          document.getElementById("title").innerText = `Luyện Nghe Phân Biệt Âm: ${q.word}`;
+
+          container.innerHTML = `
+            <div class="question fade-in">
+              <h3>Nghe âm và chọn đáp án</h3>
+              <div class="audio">
+                <audio id="audio-player" controls autoplay>
+                  <source src="${q.audio}" type="audio/mpeg" />
+                  Trình duyệt của bạn không hỗ trợ audio.
+                </audio>
+              </div>
+              <p><strong>Câu hỏi: ${q.word}</strong></p>
+              <div class="options">
+                ${q.options.map((option, i) => `
+                  <label><input type="radio" name="q" value="${i + 1}"> ${option}</label>
+                `).join("")}
+              </div>
+              <div id="result" class="result" style="display:none;"></div>
+            </div>
+          `;
+          container.classList.remove("fade-out");
+          container.classList.add("fade-in");
+          setTimeout(() => container.classList.remove("fade-in"), 500);
+        }, 300);
+      }
+
+      function verifyAnswer() {
+        if (verified) {
+          loadNextQuestion();
+          return;
+        }
+
+        const q = questions[currentIndex];
+        const selectedOption = document.querySelector('input[name="q"]:checked');
+        const resultDiv = document.getElementById("result");
+
+        if (!selectedOption) return;
+
+        if (selectedOption.value === q.correctAnswer) {
+          resultDiv.innerHTML = `✅ Đúng! - Phiên âm: ${q.word} - ${q.pronunciation}`;
+        } else {
+          resultDiv.innerHTML = `❌ Sai! - Phiên âm: ${q.word} - ${q.pronunciation}`;
+        }
+
+        resultDiv.style.display = "block";
+        verified = true;
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        const number = parseInt(e.key);
+        if (number >= 1 && number <= 5) {
+          const radios = document.getElementsByName("q");
+          if (radios[number - 1]) {
+            radios[number - 1].checked = true;
+            verifyAnswer();
+          }
+        } else if (e.key === "Enter") {
+          if (verified) loadNextQuestion();
+        } else if (e.key === " ") {
+          e.preventDefault();
+          const audio = document.getElementById("audio-player");
+
+          if (!document.querySelector('input[name="q"]:checked') || !verified) {
+            if (audio) audio.play();
+          } else {
+            loadNextQuestion();
+          }
+        }
+      });
+
+      window.onload = loadNextQuestion;
+    </script>
+  </body>
+</html>

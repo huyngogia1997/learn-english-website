@@ -73,18 +73,47 @@
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
+      
+      .mobile-controls {
+        display: none;
+        margin: 15px 0;
+        text-align: center;
+      }
+      
+      @media (max-width: 768px) {
+        .mobile-controls {
+          display: block;
+        }
+        .guide {
+          display: none; /* Ẩn hướng dẫn phím tắt trên điện thoại */
+        }
+        .question {
+          padding: 15px;
+          margin: 10px auto;
+        }
+        .options label {
+          padding: 10px 0;
+          margin: 5px 0;
+        }
+        .btn {
+          padding: 12px 20px;
+          margin: 10px 5px;
+          font-size: 16px;
+        }
+      }
     </style>
   </head>
   <body>
     <h1 id="title"></h1>
     <div id="questions-container"></div>
 
-    <div class="guide">
+      <div class="guide">
       <h3>Hướng dẫn phím tắt:</h3>
       <ul>
         <li><strong>1-5:</strong> Chọn đáp án tương ứng.</li>
         <li><strong>Enter:</strong> Xác nhận câu trả lời hoặc chuyển sang câu tiếp theo sau khi kiểm tra.</li>
         <li><strong>Space:</strong> Phát lại âm thanh câu hỏi hoặc chuyển sang câu tiếp theo nếu đã chọn và xác nhận câu trả lời.</li>
+        <li><strong>Tab:</strong> Phát lại âm thanh câu hỏi bất kỳ lúc nào.</li>
       </ul>
     </div>
 
@@ -131,13 +160,6 @@
           word: "journal",
           correctAnswer: "2",
           pronunciation: "journal: /dʒ/ - /ˈdʒɜːnəl/",
-        },
-        {
-          audio: "audio/choir--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "choir",
-          correctAnswer: "1",
-          pronunciation: "choir: /tʃ/ - /kwaɪə/",
         },
         {
           audio: "audio/jungle--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
@@ -201,10 +223,14 @@
             <div class="question fade-in">
               <h3>Nghe âm và chọn đáp án</h3>
               <div class="audio">
-                <audio id="audio-player" controls autoplay>
+                <audio id="audio-player" controls>
                   <source src="${q.audio}" type="audio/mpeg" />
                   Trình duyệt của bạn không hỗ trợ audio.
                 </audio>
+              </div>
+              <div class="mobile-controls">
+                <button class="btn" onclick="playAudio()">Phát âm thanh</button>
+                <button class="btn" onclick="verifyAnswer()">Xác nhận / Tiếp theo</button>
               </div>
               <p><strong>Câu hỏi: ****</strong></p>
               <div class="options">
@@ -217,7 +243,9 @@
           `;
           container.classList.remove("fade-out");
           container.classList.add("fade-in");
-          setTimeout(() => container.classList.remove("fade-in"), 500);
+          setTimeout(() => {
+            container.classList.remove("fade-in");}, 500);
+            playAudio();
         }, 300);
       }
 
@@ -235,17 +263,56 @@
 
         if (selectedOption.value === q.correctAnswer) {
           resultDiv.innerHTML = `✅ Đúng! - Phiên âm: ${q.word} - ${q.pronunciation}`;
+          playSound('correct');
         } else {
           resultDiv.innerHTML = `❌ Sai! - Phiên âm đúng: ${q.word} - ${q.pronunciation}`;
+          playSound('incorrect');
         }
 
         resultDiv.style.display = "block";
         verified = true;
       }
 
+      function playSound(type) {
+        const audio = new Audio();
+        if (type === 'correct') {
+          audio.src = 'https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3'; // Correct sound
+        } else {
+          audio.src = 'https://assets.mixkit.co/active_storage/sfx/2053/2053-preview.mp3'; // Incorrect sound
+        }
+        audio.play();
+      }
+
+      function playAudio() {
+        const audioPlayer = document.getElementById('audio-player');
+        if (audioPlayer) {
+          audioPlayer.play();
+        }
+      }
+
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
+        if (e.key === "Enter") {
+          e.preventDefault();
           verifyAnswer();
+        }
+        if (e.key === " ") {
+          e.preventDefault(); // Prevent default space behavior (scrolling)
+          const selectedOption = document.querySelector('input[name="q"]:checked');
+          
+          if (verified) {
+            // If already verified, move to next question
+            loadNextQuestion();
+          } else if (selectedOption) {
+            // If an option is selected but not verified, verify the answer
+            verifyAnswer();
+          } else {
+            // If no option is selected, just play the audio
+            playAudio();
+          }
+        }
+        if (e.key === "Tab") {
+          e.preventDefault(); // Prevent default tab behavior
+          playAudio(); // Play audio regardless of state
         }
         if (e.key >= "1" && e.key <= "5") {
           const selected = document.querySelector(`input[value="${e.key}"]`);

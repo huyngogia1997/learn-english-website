@@ -1,0 +1,87 @@
+[
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/church--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/", "3. /ʒ/", "4. /d/", "5. /ʃ/"],
+      "word": "church",
+      "correctAnswer": "1",
+      "pronunciation": "church: /tʃ/ - /tʃɜːtʃ/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/judge--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "judge",
+      "correctAnswer": "2",
+      "pronunciation": "/dʒ/ - /dʒʌdʒ/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/cheese--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "cheese",
+      "correctAnswer": "1",
+      "pronunciation": "cheese: /tʃ/ - /tʃiːz/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/giant--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "giant",
+      "correctAnswer": "2",
+      "pronunciation": "giant: /dʒ/ - /ˈdʒaɪənt/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/chocolate--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "chocolate",
+      "correctAnswer": "1",
+      "pronunciation": "chocolate: /tʃ/ - /ˈtʃɒklət/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/journal--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "journal",
+      "correctAnswer": "2",
+      "pronunciation": "journal: /dʒ/ - /ˈdʒɜːnəl/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/choir--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "choir",
+      "correctAnswer": "1",
+      "pronunciation": "choir: /tʃ/ - /kwaɪə/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/jungle--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "jungle",
+      "correctAnswer": "2",
+      "pronunciation": "jungle: /dʒ/ - /ˈdʒʌŋɡəl/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/chip--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "chip",
+      "correctAnswer": "1",
+      "pronunciation": "chip: /tʃ/ - /ʧɪp/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/juice--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "juice",
+      "correctAnswer": "2",
+      "pronunciation": "juice: /dʒ/ - /dʒuːs/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/chamber--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "chamber",
+      "correctAnswer": "1",
+      "pronunciation": "chamber: /tʃ/ - /ˈʧeɪmbər/"
+    },
+    {
+      "audio": "https://ssl.gstatic.com/dictionary/static/sounds/oxford/jeep--_gb_1.mp3",
+      "options": ["1. /tʃ/", "2. /dʒ/"],
+      "word": "jeep",
+      "correctAnswer": "2",
+      "pronunciation": "jeep: /dʒ/ - /dʒiːp/"
+    }
+  ]
+  

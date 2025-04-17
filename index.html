@@ -119,84 +119,283 @@
 
     <script>
       const questions = [
-        {
-          audio: "audio/church--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/", "3. /ʒ/", "4. /d/", "5. /ʃ/"],
-          word: "Âm đầu trong từ là âm gì",
-          correctAnswer: "1",
-          pronunciation: "church: /tʃ/ - /tʃɜːtʃ/",
-        },
-        {
-          audio: "audio/judge--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "judge",
-          correctAnswer: "2",
-          pronunciation: "/dʒ/ - /dʒʌdʒ/",
-        },
-        {
-          audio: "audio/cheese--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "cheese",
-          correctAnswer: "1",
-          pronunciation: "cheese: /tʃ/ - /tʃiːz/",
-        },
-        {
-          audio: "audio/giant--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "giant",
-          correctAnswer: "2",
-          pronunciation: "giant: /dʒ/ - /ˈdʒaɪənt/",
-        },
-        {
-          audio: "audio/chocolate--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "chocolate",
-          correctAnswer: "1",
-          pronunciation: "chocolate: /tʃ/ - /ˈtʃɒklət/",
-        },
-        {
-          audio: "audio/journal--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "journal",
-          correctAnswer: "2",
-          pronunciation: "journal: /dʒ/ - /ˈdʒɜːnəl/",
-        },
-        {
-          audio: "audio/jungle--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "jungle",
-          correctAnswer: "2",
-          pronunciation: "jungle: /dʒ/ - /ˈdʒʌŋɡəl/",
-        },
-        {
-          audio: "audio/chip--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "chip",
-          correctAnswer: "1",
-          pronunciation: "chip: /tʃ/ - /ʧɪp/",
-        },
-        {
-          audio: "audio/juice--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "juice",
-          correctAnswer: "2",
-          pronunciation: "juice: /dʒ/ - /dʒuːs/",
-        },
-        {
-          audio: "audio/chamber--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "chamber",
-          correctAnswer: "1",
-          pronunciation: "chamber: /tʃ/ - /ˈʧeɪmbər/",
-        },
-        {
-          audio: "audio/jeep--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
-          options: ["1. /tʃ/", "2. /dʒ/"],
-          word: "jeep",
-          correctAnswer: "2",
-          pronunciation: "jeep: /dʒ/ - /dʒiːp/",
-        }
-      ];
+      {
+        "audio": "audio/right--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "right",
+        "correctAnswer": "2",
+        "pronunciation": "right: /raɪt/"
+      },
+      {
+        "audio": "audio/light--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "light",
+        "correctAnswer": "1",
+        "pronunciation": "light: /laɪt/"
+      },
+      {
+        "audio": "audio/rice--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "rice",
+        "correctAnswer": "2",
+        "pronunciation": "rice: /raɪs/"
+      },
+      {
+        "audio": "audio/lice--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "lice",
+        "correctAnswer": "1",
+        "pronunciation": "lice: /laɪs/"
+      },
+      {
+        "audio": "audio/road--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "road",
+        "correctAnswer": "2",
+        "pronunciation": "road: /rəʊd/"
+      },
+      {
+        "audio": "audio/load--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "load",
+        "correctAnswer": "1",
+        "pronunciation": "load: /ləʊd/"
+      },
+      {
+        "audio": "audio/rake--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "rake",
+        "correctAnswer": "2",
+        "pronunciation": "rake: /reɪk/"
+      },
+      {
+        "audio": "audio/lake--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "lake",
+        "correctAnswer": "1",
+        "pronunciation": "lake: /leɪk/"
+      },
+      {
+        "audio": "audio/rip--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "rip",
+        "correctAnswer": "2",
+        "pronunciation": "rip: /rɪp/"
+      },
+      {
+        "audio": "audio/lip--_gb_1.mp3",
+        "options": ["1. /l/", "2. /r/"],
+        "word": "lip",
+        "correctAnswer": "1",
+        "pronunciation": "lip: /lɪp/"
+      },{
+        "audio": "audio/right--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "right",
+        "correctAnswer": "1",
+        "pronunciation": "right: /raɪt/"
+      },
+      {
+        "audio": "audio/light--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "light",
+        "correctAnswer": "2",
+        "pronunciation": "light: /laɪt/"
+      },
+      {
+        "audio": "audio/red--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "red",
+        "correctAnswer": "1",
+        "pronunciation": "red: /rɛd/"
+      },
+      {
+        "audio": "audio/led--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "led",
+        "correctAnswer": "2",
+        "pronunciation": "led: /lɛd/"
+      },
+      {
+        "audio": "audio/road--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "road",
+        "correctAnswer": "1",
+        "pronunciation": "road: /rəʊd/"
+      },
+      {
+        "audio": "audio/load--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "load",
+        "correctAnswer": "2",
+        "pronunciation": "load: /ləʊd/"
+      },
+      {
+        "audio": "audio/rice--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "rice",
+        "correctAnswer": "1",
+        "pronunciation": "rice: /raɪs/"
+      },
+      {
+        "audio": "audio/lice--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "lice",
+        "correctAnswer": "2",
+        "pronunciation": "lice: /laɪs/"
+      },
+      {
+        "audio": "audio/rake--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "rake",
+        "correctAnswer": "1",
+        "pronunciation": "rake: /reɪk/"
+      },
+      {
+        "audio": "audio/lake--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "lake",
+        "correctAnswer": "2",
+        "pronunciation": "lake: /leɪk/"
+      },
+      {
+        "audio": "audio/ring--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "ring",
+        "correctAnswer": "1",
+        "pronunciation": "ring: /rɪŋ/"
+      },
+      {
+        "audio": "audio/ling--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "ling",
+        "correctAnswer": "2",
+        "pronunciation": "ling: /lɪŋ/"
+      },
+      {
+        "audio": "audio/rip--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "rip",
+        "correctAnswer": "1",
+        "pronunciation": "rip: /rɪp/"
+      },
+      {
+        "audio": "audio/lip--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "lip",
+        "correctAnswer": "2",
+        "pronunciation": "lip: /lɪp/"
+      },
+      {
+        "audio": "audio/rock--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "rock",
+        "correctAnswer": "1",
+        "pronunciation": "rock: /rɒk/"
+      },
+      {
+        "audio": "audio/lock--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "lock",
+        "correctAnswer": "2",
+        "pronunciation": "lock: /lɒk/"
+      },
+      {
+        "audio": "audio/rude--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "rude",
+        "correctAnswer": "1",
+        "pronunciation": "rude: /ruːd/"
+      },
+      {
+        "audio": "audio/lewd--_gb_1.mp3",
+        "options": ["1. /r/", "2. /l/"],
+        "word": "lewd",
+        "correctAnswer": "2",
+        "pronunciation": "lewd: /luːd/"
+      }
+    ]
+
+      
+      // [
+      //   {
+      //     audio: "audio/church--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/", "3. /ʒ/", "4. /d/", "5. /ʃ/"],
+      //     word: "Âm đầu trong từ là âm gì",
+      //     correctAnswer: "1",
+      //     pronunciation: "church: /tʃ/ - /tʃɜːtʃ/",
+      //   },
+      //   {
+      //     audio: "audio/judge--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "judge",
+      //     correctAnswer: "2",
+      //     pronunciation: "/dʒ/ - /dʒʌdʒ/",
+      //   },
+      //   {
+      //     audio: "audio/cheese--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "cheese",
+      //     correctAnswer: "1",
+      //     pronunciation: "cheese: /tʃ/ - /tʃiːz/",
+      //   },
+      //   {
+      //     audio: "audio/giant--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "giant",
+      //     correctAnswer: "2",
+      //     pronunciation: "giant: /dʒ/ - /ˈdʒaɪənt/",
+      //   },
+      //   {
+      //     audio: "audio/chocolate--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "chocolate",
+      //     correctAnswer: "1",
+      //     pronunciation: "chocolate: /tʃ/ - /ˈtʃɒklət/",
+      //   },
+      //   {
+      //     audio: "audio/journal--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "journal",
+      //     correctAnswer: "2",
+      //     pronunciation: "journal: /dʒ/ - /ˈdʒɜːnəl/",
+      //   },
+      //   {
+      //     audio: "audio/jungle--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "jungle",
+      //     correctAnswer: "2",
+      //     pronunciation: "jungle: /dʒ/ - /ˈdʒʌŋɡəl/",
+      //   },
+      //   {
+      //     audio: "audio/chip--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "chip",
+      //     correctAnswer: "1",
+      //     pronunciation: "chip: /tʃ/ - /ʧɪp/",
+      //   },
+      //   {
+      //     audio: "audio/juice--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "juice",
+      //     correctAnswer: "2",
+      //     pronunciation: "juice: /dʒ/ - /dʒuːs/",
+      //   },
+      //   {
+      //     audio: "audio/chamber--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "chamber",
+      //     correctAnswer: "1",
+      //     pronunciation: "chamber: /tʃ/ - /ˈʧeɪmbər/",
+      //   },
+      //   {
+      //     audio: "audio/jeep--_gb_1.mp3", // Đã sửa đường dẫn âm thanh
+      //     options: ["1. /tʃ/", "2. /dʒ/"],
+      //     word: "jeep",
+      //     correctAnswer: "2",
+      //     pronunciation: "jeep: /dʒ/ - /dʒiːp/",
+      //   }
+      // ];
 
       let currentIndex = -1;
       let verified = false;
